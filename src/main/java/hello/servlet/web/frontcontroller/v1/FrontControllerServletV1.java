@@ -18,7 +18,9 @@ public class FrontControllerServletV1 extends HttpServlet {
 
     private Map<String, ControllerV1> controllerMap = new HashMap<>();
 
-    //RestController를 사용할때 서버 기동시 아래 생성자가 로딩된다
+    //이게 서버 로딩시 호출되는 이유는
+    //수업 내에서는 @ServletComponentScan을 사용하고 있어서 @WebServlet이 붙은 클래스들이 SpringBoot 로드시 빈으로 등록됩니다.
+    //그때 빈이 생성될 것이므로 수업 내 코드 기준으로는 @ServletComponentScan으로 인해 @WebServlet이 스캔되고 빈이 등록될 때 생성자가 호출될 것입니다
     public FrontControllerServletV1() {
         System.out.println("FrontControllerServletV1.FrontControllerServletV1");
         controllerMap.put("/front-controller/v1/members/new-form", new MemberFormControllerV1());
